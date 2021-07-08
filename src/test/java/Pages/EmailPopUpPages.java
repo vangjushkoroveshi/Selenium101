@@ -22,7 +22,7 @@ public class EmailPopUpPages extends BasePage{
         emailInput.click();
         Thread.sleep(500);
         actions.sendKeys(email);
-        actions.perform();
+        actions.build().perform();
 //        emailInput.sendKeys(email);
         Thread.sleep(500);
         populateBtn.click();

@@ -30,6 +30,7 @@ public class BaseTest {
         capabilities.setCapability("resolution","1024x768");
         capabilities.setCapability("build", "First Test");
         capabilities.setCapability("name", "Sample Test");
+        capabilities.setCapability("selenium_version","3.141.59");
         capabilities.setCapability("network", true); // To enable network logs
         capabilities.setCapability("visual", true); // To enable step by step screenshot
         capabilities.setCapability("video", true); // To enable video recording
