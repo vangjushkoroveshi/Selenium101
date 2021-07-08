@@ -20,9 +20,11 @@ public class EmailPopUpPages extends BasePage{
 
         Actions actions = new Actions(driver);
         emailInput.click();
+        Thread.sleep(500);
         actions.sendKeys(email);
         actions.perform();
 //        emailInput.sendKeys(email);
+        Thread.sleep(500);
         populateBtn.click();
 
     }
