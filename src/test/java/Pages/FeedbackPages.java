@@ -1,12 +1,13 @@
 package Pages;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
 public class FeedbackPages extends BasePage{
 
-    public FeedbackPages(WebDriver driver) {
+    public FeedbackPages(RemoteWebDriver driver) {
         super(driver);
     }
 

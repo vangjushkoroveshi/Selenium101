@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Sel:101" thread-count="2" parallel="tests">
+<suite name="Selenium:101" thread-count="2" parallel="tests">
 
-    <test name="login">
-
-<!--        <parameter name="username" value="vangjush+1@skooli.com"></parameter>-->
-<!--        <parameter name="pass" value="admin123"></parameter>-->
-<!--        <parameter name="location" value="Dubai"></parameter>-->
+    <test name="LambdaTest">
         <classes>
             <class name="Tests.LambdaTest"></class>
         </classes>

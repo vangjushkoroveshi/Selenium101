@@ -1,14 +1,13 @@
 package Pages;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import java.awt.*;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class NewPages extends BasePage{
 
-    public NewPages(WebDriver driver) {
+    public NewPages(RemoteWebDriver driver) {
         super(driver);
     }
 
