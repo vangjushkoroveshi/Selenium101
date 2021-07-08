@@ -41,6 +41,9 @@ public class BaseTest {
             System.out.println("Invalid grid URL");
         }
 
+        driver.manage().deleteAllCookies();
+        driver.manage().window().maximize();
+
 
     }
 
