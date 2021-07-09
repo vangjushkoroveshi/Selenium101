@@ -60,6 +60,9 @@ public class FeedbackPages extends BasePage{
 
     public void uploadImg(){
 
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();", driver.findElement(By.id("comments")));
+
         WebElement uploadElement = driver.findElement(By.id("file"));
 
         // enter the file path onto the file-selection input field
@@ -81,8 +84,8 @@ public class FeedbackPages extends BasePage{
 
     public void submit(){
 
-        WebElement submitBtn = driver.findElement(By.id("submit-button"));
-        submitBtn.click();
+        pageWait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.id("submit-button")))).click();
+
     }
 
     public String validateSubmitTitle(){
