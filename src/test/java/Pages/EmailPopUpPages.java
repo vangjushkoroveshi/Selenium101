@@ -18,6 +18,7 @@ public class EmailPopUpPages extends BasePage{
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].setAttribute('value', '"+email+"')", emailInput);
+        pageWait.until(ExpectedConditions.attributeContains(emailInput,"value",email));
         populateBtn.click();
 
     }

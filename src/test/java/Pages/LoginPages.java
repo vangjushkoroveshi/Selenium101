@@ -38,8 +38,7 @@ public class LoginPages extends BasePage {
 
     // Check if user is loggedIn successfully
     public boolean isLoggedInSuccessfully(){
-        WebElement toastNotification = driver.findElement(By.className("automation__toast"));
-        return pageWait.until(ExpectedConditions.invisibilityOf(toastNotification));
+        return pageWait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.className("automation__toast"))));
     }
 
 }
