@@ -1,7 +1,5 @@
 package Base;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
@@ -20,10 +18,6 @@ public class BaseTest {
     @Parameters({"platform","browser","version"})
     @BeforeClass
     public void lunchBrowser(String platform, String browser, String version){
-
-//        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\browser\\chromedriver.exe");
-//        driver = new ChromeDriver();
-//        driver.manage().window().maximize();
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platform", platform);
@@ -46,8 +40,6 @@ public class BaseTest {
 
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
-
-
     }
 
     @AfterClass
