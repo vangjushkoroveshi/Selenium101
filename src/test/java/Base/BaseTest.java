@@ -25,36 +25,47 @@ public class BaseTest {
 
     @Parameters({"platform","browser","version"})
     @BeforeClass
-    public void lunchBrowser(String platform, String browser, String version){
+    public void lunchBrowser(String platform, String browser, String version) throws MalformedURLException {
 
-        ChromeOptions options = new ChromeOptions();
-        Map<String, Object> prefs = new HashMap<String, Object>();
-        prefs.put("download.prompt_for_download", false);
-        options.setExperimentalOption("prefs", prefs);
+        if (browser.equals("Chrome")){
+            ChromeOptions options = new ChromeOptions();
+            Map<String, Object> prefs = new HashMap<String, Object>();
+            prefs.put("download.prompt_for_download", false);
+            options.setExperimentalOption("prefs", prefs);
 
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("platform", platform);
-        capabilities.setCapability("browserName", browser);
-        capabilities.setCapability("version", version); // If this cap isn't specified, it will just get the any available one
-        capabilities.setCapability("resolution","1024x768");
-        capabilities.setCapability("build", "Test");
-        capabilities.setCapability("name", "Sample Test");
-        capabilities.setCapability("selenium_version","3.141.59");
-        capabilities.setCapability("network", true); // To enable network logs
-        capabilities.setCapability("visual", true); // To enable step by step screenshot
-        capabilities.setCapability("video", true); // To enable video recording
-        capabilities.setCapability("console", true); // To capture console logs
-        capabilities = DesiredCapabilities.chrome();
-        options.merge(capabilities);
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setCapability("platform", platform);
+            capabilities.setCapability("browserName", browser);
+            capabilities.setCapability("version", version); // If this cap isn't specified, it will just get the any available one
+            capabilities.setCapability("resolution","1024x768");
+            capabilities.setCapability("build", "Test");
+            capabilities.setCapability("name", "Sample Test");
+            capabilities.setCapability("selenium_version","3.141.59");
+            capabilities.setCapability("network", true); // To enable network logs
+            capabilities.setCapability("visual", true); // To enable step by step screenshot
+            capabilities.setCapability("video", true); // To enable video recording
+            capabilities.setCapability("console", true); // To capture console logs
+            capabilities = DesiredCapabilities.chrome();
+            options.merge(capabilities);
 
-        try {
-            if (browser.equals("Chrome"))
             driver= new RemoteWebDriver(new URL("https://"+username+":"+accessKey+"@hub.lambdatest.com/wd/hub"), options);
-            else
-                driver= new RemoteWebDriver(new URL("https://"+username+":"+accessKey+"@hub.lambdatest.com/wd/hub"), capabilities);
-        } catch (MalformedURLException e) {
-            System.out.println("Invalid grid URL");
+        } else {
+
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setCapability("platform", platform);
+            capabilities.setCapability("browserName", browser);
+            capabilities.setCapability("version", version); // If this cap isn't specified, it will just get the any available one
+            capabilities.setCapability("resolution","1024x768");
+            capabilities.setCapability("build", "Test");
+            capabilities.setCapability("name", "Sample Test");
+            capabilities.setCapability("selenium_version","3.141.59");
+            capabilities.setCapability("network", true); // To enable network logs
+            capabilities.setCapability("visual", true); // To enable step by step screenshot
+            capabilities.setCapability("video", true); // To enable video recording
+            capabilities.setCapability("console", true); // To capture console logs
+            driver= new RemoteWebDriver(new URL("https://"+username+":"+accessKey+"@hub.lambdatest.com/wd/hub"), capabilities);
         }
+
 
         driver.setFileDetector(new LocalFileDetector());
         driver.manage().deleteAllCookies();
