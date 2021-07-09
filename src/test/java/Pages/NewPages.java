@@ -39,6 +39,7 @@ public class NewPages extends BasePage{
         tabs = new ArrayList<> (driver.getWindowHandles());
         driver.switchTo().window(tabs.get(2));
 
+        System.setProperty("java.awt.headless", "false");
         Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_CONTROL);
         robot.keyPress(KeyEvent.VK_S);
