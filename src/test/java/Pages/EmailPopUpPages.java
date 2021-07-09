@@ -1,6 +1,7 @@
 package Pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -18,13 +19,8 @@ public class EmailPopUpPages extends BasePage{
         WebElement emailInput = driver.findElement(By.id("developer-name"));
         WebElement populateBtn = driver.findElement(By.id("populate"));
 
-        Actions actions = new Actions(driver);
-        emailInput.click();
-        Thread.sleep(500);
-        actions.sendKeys(email);
-        actions.build().perform();
-//        emailInput.sendKeys(email);
-        Thread.sleep(500);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].setAttribute('value', '"+email+"')", emailInput);
         populateBtn.click();
 
     }
