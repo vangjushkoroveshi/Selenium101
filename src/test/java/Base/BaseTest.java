@@ -27,7 +27,6 @@ public class BaseTest {
     @BeforeClass
     public void lunchBrowser(String platform, String browser, String version){
 
-
         ChromeOptions options = new ChromeOptions();
         Map<String, Object> prefs = new HashMap<String, Object>();
         prefs.put("download.prompt_for_download", false);
@@ -45,11 +44,14 @@ public class BaseTest {
         capabilities.setCapability("visual", true); // To enable step by step screenshot
         capabilities.setCapability("video", true); // To enable video recording
         capabilities.setCapability("console", true); // To capture console logs
-        capabilities = DesiredCapabilities.safari();
+        capabilities = DesiredCapabilities.chrome();
         options.merge(capabilities);
 
         try {
+            if (browser.equals("Chrome"))
             driver= new RemoteWebDriver(new URL("https://"+username+":"+accessKey+"@hub.lambdatest.com/wd/hub"), options);
+            else
+                driver= new RemoteWebDriver(new URL("https://"+username+":"+accessKey+"@hub.lambdatest.com/wd/hub"), capabilities);
         } catch (MalformedURLException e) {
             System.out.println("Invalid grid URL");
         }
