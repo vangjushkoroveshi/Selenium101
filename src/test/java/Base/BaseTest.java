@@ -6,6 +6,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -16,19 +17,20 @@ public class BaseTest {
     String username = "vangjushkoroveshi";
     String accessKey = "hvHHh4MLrulWRIrqfwQW1arpxxHYNNbraAXnx1YFVpq06Wokij";
 
+    @Parameters({"platform","browser","version"})
     @BeforeClass
-    public void lunchBrowser(){
+    public void lunchBrowser(String platform, String browser, String version){
 
 //        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\browser\\chromedriver.exe");
 //        driver = new ChromeDriver();
 //        driver.manage().window().maximize();
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("platform", "Windows 10");
-        capabilities.setCapability("browserName", "Chrome");
-        capabilities.setCapability("version", "91.0"); // If this cap isn't specified, it will just get the any available one
+        capabilities.setCapability("platform", platform);
+        capabilities.setCapability("browserName", browser);
+        capabilities.setCapability("version", version); // If this cap isn't specified, it will just get the any available one
         capabilities.setCapability("resolution","1024x768");
-        capabilities.setCapability("build", "First Test");
+        capabilities.setCapability("build", "Test");
         capabilities.setCapability("name", "Sample Test");
         capabilities.setCapability("selenium_version","3.141.59");
         capabilities.setCapability("network", true); // To enable network logs

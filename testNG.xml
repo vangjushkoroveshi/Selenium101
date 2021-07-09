@@ -2,9 +2,22 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Selenium:101" thread-count="2" parallel="tests">
 
-    <test name="LambdaTest">
+    <test name="LambdaTest-WIN">
+        <parameter name="platform" value="Windows 10"/>
+        <parameter name="browser" value="Chrome"/>
+        <parameter name="version" value="91.0"/>
         <classes>
             <class name="Tests.LambdaTest"></class>
         </classes>
     </test>
+
+    <test name="LambdaTest-MAC">
+        <parameter name="platform" value="MacOS Catalina"/>
+        <parameter name="browser" value="Safari"/>
+        <parameter name="version" value="13.0"/>
+        <classes>
+            <class name="Tests.LambdaTest"></class>
+        </classes>
+    </test>
+
 </suite>

@@ -47,9 +47,10 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>2.22.1</version>
                     <configuration>
-                        <parallel>classes</parallel>
-                        <threadCount>5</threadCount>
-                        <redirectTestOutputToFile>false</redirectTestOutputToFile>
+                        <!-- Suite testng xml file to consider for test execution -->
+                        <suiteXmlFiles>
+                            <suiteXmlFile>testNG.xml</suiteXmlFile>
+                        </suiteXmlFiles>
                     </configuration>
                 </plugin>
             </plugins>
