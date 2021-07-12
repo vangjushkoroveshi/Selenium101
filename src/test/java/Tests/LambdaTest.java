@@ -5,6 +5,7 @@ import Pages.EmailPopUpPages;
 import Pages.FeedbackPages;
 import Pages.LoginPages;
 import Pages.NewPages;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import java.awt.*;
@@ -16,29 +17,27 @@ import static org.testng.Assert.assertTrue;
 public class LambdaTest extends BaseTest {
 
     @Test
-    public void ShouldBeAbleToLogin() {
+    @Parameters({"username","password"})
+    public void ShouldBeAbleToLogin(String username, String password) {
         LoginPages loginPage = new LoginPages(driver);
         loginPage.visit();
         assertTrue(loginPage.isLoaded());
 
-        loginPage.login("lambda", "lambda123");
+        loginPage.login(username, password);
         assertTrue(loginPage.isLoggedInSuccessfully());
     }
 
     @Test(dependsOnMethods = "ShouldBeAbleToLogin")
-    public void validateEmailAlert() throws InterruptedException {
-
-        String email = "vangjushkoroveshi@gmail.com";
-
+    @Parameters({"email"})
+    public void validateEmailAlert(String email) throws InterruptedException {
         EmailPopUpPages emailCheck = new EmailPopUpPages(driver);
         emailCheck.insertEmail(email);
         assertEquals(email,emailCheck.getAlertMsgAndCloseIt());
     }
 
     @Test(dependsOnMethods = "validateEmailAlert")
-    public void validateFeedbackForm(){
-
-        String rateExperience = "90";
+    @Parameters({"rateExperience"})
+    public void validateFeedbackForm(String rateExperience){
 
         FeedbackPages feedbackPages = new FeedbackPages(driver);
 
@@ -53,7 +52,7 @@ public class LambdaTest extends BaseTest {
     }
 
     @Test(dependsOnMethods = "validateFeedbackForm")
-    public void newTab() throws InterruptedException, IOException, AWTException {
+    public void newTab() throws InterruptedException, AWTException {
         NewPages newPages = new NewPages(driver);
 
         newPages.openUrlInANewTab();

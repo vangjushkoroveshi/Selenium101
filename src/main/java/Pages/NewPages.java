@@ -1,5 +1,6 @@
 package Pages;
 
+import Base.BasePages;
 import org.openqa.selenium.*;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -8,13 +9,12 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
-public class NewPages extends BasePage{
+public class NewPages extends BasePages {
 
     public NewPages(RemoteWebDriver driver) {
         super(driver);
     }
 
-    JavascriptExecutor js = (JavascriptExecutor) driver;
     ArrayList<String> tabs = new ArrayList<> (driver.getWindowHandles());
 
     public void openUrlInANewTab() throws InterruptedException {

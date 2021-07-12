@@ -1,12 +1,12 @@
 package Pages;
 
+import Base.BasePages;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class LoginPages extends BasePage {
+public class LoginPages extends BasePages {
 
     public LoginPages(RemoteWebDriver driver) {
         super(driver);

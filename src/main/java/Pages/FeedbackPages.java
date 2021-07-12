@@ -1,11 +1,12 @@
 package Pages;
 
+import Base.BasePages;
 import org.openqa.selenium.*;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
-public class FeedbackPages extends BasePage{
+public class FeedbackPages extends BasePages {
 
     public FeedbackPages(RemoteWebDriver driver) {
         super(driver);
@@ -60,13 +61,12 @@ public class FeedbackPages extends BasePage{
 
     public void uploadImg(){
 
-        JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView();", driver.findElement(By.id("comments")));
+        pageWait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.id("comments")))).sendKeys("Hello there!");
 
-        WebElement uploadElement = driver.findElement(By.id("file"));
 
         // enter the file path onto the file-selection input field
-        uploadElement.sendKeys(System.getProperty("user.dir")+"\\images\\jenkins.svg");
+        driver.findElement(By.id("file")).sendKeys(System.getProperty("user.dir")+"\\images\\jenkins.svg");
 
     }
 
